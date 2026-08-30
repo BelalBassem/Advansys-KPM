@@ -1,0 +1,38 @@
+.ai-button {
+  position: fixed;
+  z-index: 10;
+  right: 28px;
+  bottom: 82px;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #c5e0ff;
+  border-radius: 50%;
+  color: #071226;
+  background: #83bbff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+}
+
+.ai-button:hover {
+  background: #a8d0ff;
+  box-shadow: 0 14px 34px rgba(41, 123, 224, 0.28);
+}
+
+.ai-button:focus-visible {
+  outline: 3px solid rgba(173, 132, 255, 0.55);
+  outline-offset: 3px;
+}
+
+.ai-button-icon {
+  width: 21px;
+  height: 21px;
+}
+
+@media (max-width: 700px) {
+  .ai-button {
+    right: 18px;
+    bottom: 90px;
+  }
+}

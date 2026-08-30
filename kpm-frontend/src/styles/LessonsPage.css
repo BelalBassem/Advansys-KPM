@@ -1,0 +1,118 @@
+.lessons-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #f5f7ff;
+  background: linear-gradient(135deg, #25113f 0%, #080b17 48%, #0b3158 100%);
+}
+
+.lessons-main {
+  width: min(1120px, calc(100% - 48px));
+  flex: 1;
+  margin: 0 auto;
+  padding: 42px 0 56px;
+}
+
+.lessons-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 30px;
+}
+
+.lessons-title-box {
+  max-width: 650px;
+}
+
+.lessons-title {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.lessons-description {
+  margin: 0;
+  color: #b6bfd1;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.create-button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 22px;
+  border: 1px solid #8dbdff;
+  border-radius: 6px;
+  color: #081224;
+  background: #8dbdff;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.create-button:hover {
+  background: #acd0ff;
+}
+
+.create-button:focus-visible,
+.group-button:focus-visible {
+  outline: 3px solid rgba(173, 132, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.create-button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.lessons-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.group-button {
+  align-self: flex-end;
+  min-height: 38px;
+  margin-top: 16px;
+  padding: 0 16px;
+  border: 1px solid #41516b;
+  border-radius: 6px;
+  color: #dce5f5;
+  background: rgba(7, 14, 27, 0.7);
+}
+
+.group-button:hover {
+  border-color: #7590b8;
+  background: rgba(23, 37, 59, 0.9);
+}
+
+.lesson-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  gap: 28px;
+  margin-top: 24px;
+}
+
+@media (max-width: 700px) {
+  .lessons-main {
+    width: min(100% - 32px, 1120px);
+    padding: 30px 0 44px;
+  }
+
+  .lessons-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .create-button {
+    width: 100%;
+  }
+
+  .lesson-list {
+    grid-template-columns: 1fr;
+  }
+}
