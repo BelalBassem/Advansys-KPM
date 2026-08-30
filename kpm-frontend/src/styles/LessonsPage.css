@@ -97,6 +97,36 @@
   margin-top: 24px;
 }
 
+:root[data-theme='light'] .lessons-page {
+  color: #20242c;
+  background: #f5f7fa;
+}
+
+:root[data-theme='light'] .lessons-description {
+  color: #707988;
+}
+
+:root[data-theme='light'] .create-button {
+  border-color: #2468eb;
+  color: #ffffff;
+  background: #2468eb;
+}
+
+:root[data-theme='light'] .create-button:hover {
+  background: #1d58ca;
+}
+
+:root[data-theme='light'] .group-button {
+  border-color: #d4dae4;
+  color: #2c323b;
+  background: #edf0f5;
+}
+
+:root[data-theme='light'] .group-button:hover {
+  border-color: #b9c3d2;
+  background: #e3e7ee;
+}
+
 @media (max-width: 700px) {
   .lessons-main {
     width: min(100% - 32px, 1120px);

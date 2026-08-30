@@ -30,6 +30,18 @@
   height: 21px;
 }
 
+:root[data-theme='light'] .ai-button {
+  border-color: #2468eb;
+  color: #ffffff;
+  background: #2468eb;
+  box-shadow: 0 12px 28px rgba(36, 104, 235, 0.24);
+}
+
+:root[data-theme='light'] .ai-button:hover {
+  background: #1d58ca;
+  box-shadow: 0 14px 32px rgba(36, 104, 235, 0.3);
+}
+
 @media (max-width: 700px) {
   .ai-button {
     right: 18px;

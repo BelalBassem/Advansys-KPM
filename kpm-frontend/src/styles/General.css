@@ -2,8 +2,15 @@
   font-family: Inter, Arial, sans-serif;
   color: #f5f7ff;
   background: #080b17;
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+:root[data-theme='light'] {
+  color: #20242c;
+  background: #f5f7fa;
+  color-scheme: light;
 }
 
 * {
@@ -20,6 +27,8 @@ body,
 
 body {
   min-height: 100vh;
+  color: inherit;
+  background: inherit;
 }
 
 button,

@@ -39,6 +39,21 @@
   outline-offset: 2px;
 }
 
+:root[data-theme='light'] .footer {
+  border-top-color: #d9dee7;
+  color: #747d8c;
+  background: #ffffff;
+}
+
+:root[data-theme='light'] .footer-link {
+  color: #687180;
+}
+
+:root[data-theme='light'] .footer-link:hover {
+  color: #171c24;
+  background: #eef3fb;
+}
+
 @media (max-width: 650px) {
   .footer {
     flex-direction: column;

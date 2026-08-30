@@ -77,6 +77,34 @@
   height: 20px;
 }
 
+:root[data-theme='light'] .navbar {
+  border-bottom-color: #d9dee7;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+:root[data-theme='light'] .navbar-link {
+  color: #252a33;
+}
+
+:root[data-theme='light'] .navbar-link:hover {
+  color: #11151b;
+  background: #eef3fb;
+}
+
+:root[data-theme='light'] .navbar-link:nth-child(2) {
+  color: #11151b;
+  border-bottom-color: #2468eb;
+}
+
+:root[data-theme='light'] .navbar-icon-button {
+  color: #171c24;
+}
+
+:root[data-theme='light'] .navbar-icon-button:hover {
+  border-color: #c7d8f5;
+  background: #edf3fc;
+}
+
 @media (max-width: 900px) {
   .navbar {
     flex-wrap: wrap;

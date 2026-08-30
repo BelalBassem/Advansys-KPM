@@ -376,3 +376,123 @@
     grid-template-columns: 1fr;
   }
 }
+
+:root[data-theme='light'] .create-lesson-page {
+  color: #20242c;
+  background: #f5f7fa;
+}
+
+:root[data-theme='light'] .create-lesson-header-description {
+  color: #707988;
+}
+
+:root[data-theme='light'] .create-lesson-basic-information,
+:root[data-theme='light'] .create-lesson-content,
+:root[data-theme='light'] .create-lesson-attachments,
+:root[data-theme='light'] .create-lesson-review {
+  border-color: #d6dbe4;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(31, 42, 58, 0.06);
+}
+
+:root[data-theme='light'] .create-lesson-basic-information-header::before,
+:root[data-theme='light'] .create-lesson-content-title::before,
+:root[data-theme='light'] .create-lesson-attachments-title::before,
+:root[data-theme='light'] .create-lesson-review-title::before {
+  background: #2468eb;
+  box-shadow: 0 0 14px rgba(36, 104, 235, 0.2);
+}
+
+:root[data-theme='light'] .create-lesson-basic-information-title,
+:root[data-theme='light'] .create-lesson-basic-information-project,
+:root[data-theme='light'] .create-lesson-basic-information-industry,
+:root[data-theme='light'] .create-lesson-content-label {
+  color: #4e5663;
+}
+
+:root[data-theme='light'] .create-lesson-basic-information-title-box,
+:root[data-theme='light'] .create-lesson-basic-information-project-box,
+:root[data-theme='light'] .create-lesson-basic-information-industry-box,
+:root[data-theme='light'] .create-lesson-content-description {
+  border-color: #d5dae3;
+  color: #20242c;
+  background: #fafbfc;
+}
+
+:root[data-theme='light'] .create-lesson-basic-information-title-box::placeholder,
+:root[data-theme='light'] .create-lesson-basic-information-project-box::placeholder,
+:root[data-theme='light'] .create-lesson-basic-information-industry-box::placeholder,
+:root[data-theme='light'] .create-lesson-content-description::placeholder {
+  color: #929aa8;
+}
+
+:root[data-theme='light'] .create-lesson-basic-information-title-box:focus,
+:root[data-theme='light'] .create-lesson-basic-information-project-box:focus,
+:root[data-theme='light'] .create-lesson-basic-information-industry-box:focus,
+:root[data-theme='light'] .create-lesson-content-description:focus {
+  border-color: #2468eb;
+  box-shadow: 0 0 0 3px rgba(36, 104, 235, 0.1);
+}
+
+:root[data-theme='light'] .create-lesson-attachments-box {
+  border-color: #aeb8c7;
+  color: #454c57;
+  background: #fafbfc;
+}
+
+:root[data-theme='light'] .create-lesson-attachments-box:hover {
+  border-color: #2468eb;
+  background: #eef4ff;
+}
+
+:root[data-theme='light'] .create-lesson-attachments-box-description,
+:root[data-theme='light'] .create-lesson-attachments-status {
+  color: #798291;
+}
+
+:root[data-theme='light'] .create-lesson-buttons-discard {
+  border-color: #db6674;
+  color: #c73548;
+  background: #fff7f8;
+}
+
+:root[data-theme='light'] .create-lesson-buttons-discard:hover {
+  background: #ffedef;
+}
+
+:root[data-theme='light'] .create-lesson-buttons-draft {
+  border-color: #d1d7e0;
+  color: #252a33;
+  background: #e9ecf2;
+}
+
+:root[data-theme='light'] .create-lesson-buttons-draft:hover {
+  background: #dfe3ea;
+}
+
+:root[data-theme='light'] .create-lesson-submit-lesson {
+  color: #ffffff;
+  background: #2468eb;
+}
+
+:root[data-theme='light'] .create-lesson-submit-lesson:hover {
+  background: #1d58ca;
+}
+
+:root[data-theme='light'] .create-lesson-review-section-title {
+  color: #747d8c;
+}
+
+:root[data-theme='light'] .create-lesson-review-row {
+  color: #424954;
+}
+
+:root[data-theme='light'] .create-lesson-review-row span:last-child {
+  color: #858e9c;
+}
+
+:root[data-theme='light'] .create-lesson-review-note {
+  border-color: #b8cff3;
+  color: #436087;
+  background: #eaf2ff;
+}

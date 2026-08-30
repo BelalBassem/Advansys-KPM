@@ -7,6 +7,31 @@ import LessonCard from '../components/LessonCard'
 import SearchBar from '../components/Search'
 import AIButton from '../components/AIButton'
 
+interface Lesson{
+  tag: string;
+  author: string;
+  description:string;
+}
+
+const lessons: Lesson[] = [
+  {
+    tag: "Software",
+    author: "Belal Bassem",
+    description: "Learn the basics of React.",
+  },
+  {
+    tag: "Hardware",
+    author: "Omar Sultan",
+    description: "Understanding TypeScript.",
+  },
+  {
+    tag: "AI",
+    author: "Thomas Shelby",
+    description: "Learn about React props.",
+  },
+]
+
+
 function LessonsPage() {
   return (
     <div className="lessons-page">
@@ -34,7 +59,14 @@ function LessonsPage() {
           <button className="group-button">Group by Department</button>
 
           <div className="lesson-list">
-            <LessonCard />
+            {lessons.map((lesson, index) => (
+              <LessonCard
+                key = {index}
+                tag = {lesson.tag}
+                author = {lesson.author}
+                description = {lesson.description}
+              />
+            ))}
           </div>
 
         </section>

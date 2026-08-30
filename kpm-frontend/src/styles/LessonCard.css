@@ -66,11 +66,15 @@
 .lesson-button {
   width: 100%;
   min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: auto;
   border: 1px solid #41516b;
   border-radius: 5px;
   color: #edf4ff;
   background: transparent;
+  text-decoration: none;
 }
 
 .lesson-button:hover {
@@ -81,4 +85,30 @@
 .lesson-button:focus-visible {
   outline: 3px solid rgba(173, 132, 255, 0.5);
   outline-offset: 2px;
+}
+
+:root[data-theme='light'] .lesson-card {
+  border-color: #d5dae3;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(31, 42, 58, 0.08);
+}
+
+:root[data-theme='light'] .lesson-author {
+  color: #2f353e;
+}
+
+:root[data-theme='light'] .lesson-description {
+  color: #20242c;
+}
+
+:root[data-theme='light'] .lesson-button {
+  border-color: #d5dae3;
+  color: #20242c;
+  background: #fafbfc;
+}
+
+:root[data-theme='light'] .lesson-button:hover {
+  border-color: #2468eb;
+  color: #174fae;
+  background: #eef4ff;
 }
