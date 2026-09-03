@@ -61,6 +61,7 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(320)", maxLength: 320, nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
                     Role = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false)
@@ -104,10 +105,10 @@ namespace Infrastructure.Migrations
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     FunctionId = table.Column<int>(type: "int", nullable: false),
                     IndustryId = table.Column<int>(type: "int", nullable: false),
-                    ValueProposition = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PersonToContactId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Summary = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PersonToContact = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
@@ -130,6 +131,74 @@ namespace Infrastructure.Migrations
                         name: "FK_Lesson_Industry_IndustryId",
                         column: x => x.IndustryId,
                         principalTable: "Industry",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Lesson_User_PersonToContactId",
+                        column: x => x.PersonToContactId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LessonDocument",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LessonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    FileUrl = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false),
+                    ContentType = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LessonDocument", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LessonDocument_Lesson_LessonId",
+                        column: x => x.LessonId,
+                        principalTable: "Lesson",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LessonKeyword",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LessonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LessonKeyword", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LessonKeyword_Lesson_LessonId",
+                        column: x => x.LessonId,
+                        principalTable: "Lesson",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LessonLink",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LessonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LessonLink", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LessonLink_Lesson_LessonId",
+                        column: x => x.LessonId,
+                        principalTable: "Lesson",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -155,6 +224,26 @@ namespace Infrastructure.Migrations
                 column: "IndustryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Lesson_PersonToContactId",
+                table: "Lesson",
+                column: "PersonToContactId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LessonDocument_LessonId",
+                table: "LessonDocument",
+                column: "LessonId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LessonKeyword_LessonId",
+                table: "LessonKeyword",
+                column: "LessonId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LessonLink_LessonId",
+                table: "LessonLink",
+                column: "LessonId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_User_Email",
                 table: "User",
                 column: "Email",
@@ -168,10 +257,16 @@ namespace Infrastructure.Migrations
                 name: "DepartmentFunction");
 
             migrationBuilder.DropTable(
-                name: "Lesson");
+                name: "LessonDocument");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "LessonKeyword");
+
+            migrationBuilder.DropTable(
+                name: "LessonLink");
+
+            migrationBuilder.DropTable(
+                name: "Lesson");
 
             migrationBuilder.DropTable(
                 name: "Department");
@@ -181,6 +276,9 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Industry");
+
+            migrationBuilder.DropTable(
+                name: "User");
         }
     }
 }

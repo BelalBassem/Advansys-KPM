@@ -1,0 +1,101 @@
+.function-card-departments,
+.function-card-department-editor {
+  margin: 16px 0 0;
+  padding: 14px 0 0;
+  border: 0;
+  border-top: 1px solid #2f4057;
+}
+
+.function-card-section-label,
+.function-card-department-editor legend {
+  margin: 0 0 10px;
+  padding: 0;
+  color: #78869a;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.function-card-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.function-card-chip {
+  max-width: 100%;
+  padding: 6px 9px;
+  border: 1px solid #3d5f85;
+  border-radius: 5px;
+  color: #c9ddf6;
+  background: rgba(44, 101, 166, 0.24);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.function-card-department-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.function-card-department-option {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #c9d5e6;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.function-card-department-option input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  margin: 0;
+  accent-color: #83bbff;
+}
+
+.function-card-department-option:has(input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.function-card-department-option span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.function-card-no-departments {
+  margin: 0;
+  color: #78869a;
+  font-size: 13px;
+}
+
+@media (max-width: 580px) {
+  .function-card-department-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+:root[data-theme='light'] .function-card-departments,
+:root[data-theme='light'] .function-card-department-editor {
+  border-top-color: #e0e4eb;
+}
+
+:root[data-theme='light'] .function-card-section-label,
+:root[data-theme='light'] .function-card-department-editor legend,
+:root[data-theme='light'] .function-card-no-departments {
+  color: #7b8492;
+}
+
+:root[data-theme='light'] .function-card-chip {
+  border-color: #b8cff3;
+  color: #315a91;
+  background: #eef4ff;
+}
+
+:root[data-theme='light'] .function-card-department-option {
+  color: #424954;
+}

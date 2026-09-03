@@ -12,8 +12,14 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
 
         builder.HasKey(lesson => lesson.Id);
 
+        builder.Property(lesson => lesson.Summary)
+            .HasMaxLength(1000);
+
         builder.Property(lesson => lesson.Description)
             .HasColumnType("text");
+
+        builder.Property(lesson => lesson.ImageUrl)
+            .HasMaxLength(2048);
 
         builder.Property(lesson => lesson.CreatedDate)
             .HasColumnType("datetime");
@@ -32,5 +38,10 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
         builder.HasOne(lesson => lesson.Industry)
             .WithMany(industry => industry.Lesson)
             .HasForeignKey(lesson => lesson.IndustryId);
+
+        builder.HasOne(lesson => lesson.PersonToContact)
+            .WithMany(user => user.ContactLessons)
+            .HasForeignKey(lesson => lesson.PersonToContactId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -1,0 +1,187 @@
+.department-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #354a65;
+  border-radius: 8px;
+  background: rgba(3, 10, 21, 0.46);
+}
+
+.department-card-header {
+  min-height: 38px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.department-card-title {
+  min-width: 0;
+  margin: 6px 0 0;
+  color: #dbe7f8;
+  font-size: 18px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.department-card-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.department-card-icon-button {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #405570;
+  border-radius: 6px;
+  color: #cbd7e8;
+  background: rgba(7, 14, 27, 0.62);
+}
+
+.department-card-icon-button:hover:not(:disabled) {
+  border-color: #83bbff;
+  color: #ffffff;
+  background: rgba(131, 187, 255, 0.1);
+}
+
+.department-card-delete-button:hover:not(:disabled) {
+  border-color: #a84454;
+  color: #ff8796;
+  background: rgba(121, 25, 42, 0.2);
+}
+
+.department-card-save-button {
+  border-color: #4e6788;
+  color: #071226;
+  background: #83bbff;
+}
+
+.department-card-save-button:hover:not(:disabled) {
+  color: #071226;
+  background: #a8d0ff;
+}
+
+.department-card-icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.department-card-edit-input {
+  width: 100%;
+  min-width: 0;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #3b4d66;
+  border-radius: 5px;
+  outline: 0;
+  color: #f4f7fc;
+  background: rgba(2, 8, 17, 0.88);
+}
+
+.department-card-edit-input:focus {
+  border-color: #83bbff;
+  box-shadow: 0 0 0 3px rgba(131, 187, 255, 0.12);
+}
+
+.department-card-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 0;
+}
+
+.department-card-meta div {
+  min-width: 0;
+  padding-top: 12px;
+  border-top: 1px solid #2f4057;
+}
+
+.department-card-meta dt {
+  margin: 0 0 5px;
+  color: #78869a;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.department-card-meta dd {
+  margin: 0;
+  color: #c9d5e6;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.department-card-icon-button:focus-visible {
+  outline: 3px solid rgba(173, 132, 255, 0.5);
+  outline-offset: 2px;
+}
+
+@media (max-width: 580px) {
+  .department-card-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+:root[data-theme='light'] .department-card {
+  border-color: #d5dae3;
+  background: #fafbfc;
+}
+
+:root[data-theme='light'] .department-card-title {
+  color: #252a33;
+}
+
+:root[data-theme='light'] .department-card-icon-button {
+  border-color: #c9d2df;
+  color: #4f5a69;
+  background: #ffffff;
+}
+
+:root[data-theme='light'] .department-card-icon-button:hover:not(:disabled) {
+  border-color: #2468eb;
+  color: #20242c;
+  background: #eef4ff;
+}
+
+:root[data-theme='light'] .department-card-delete-button:hover:not(:disabled) {
+  border-color: #db6674;
+  color: #c73548;
+  background: #fff7f8;
+}
+
+:root[data-theme='light'] .department-card-save-button {
+  border-color: #2468eb;
+  color: #ffffff;
+  background: #2468eb;
+}
+
+:root[data-theme='light'] .department-card-save-button:hover:not(:disabled) {
+  color: #ffffff;
+  background: #1d58ca;
+}
+
+:root[data-theme='light'] .department-card-edit-input {
+  border-color: #d5dae3;
+  color: #20242c;
+  background: #ffffff;
+}
+
+:root[data-theme='light'] .department-card-edit-input:focus {
+  border-color: #2468eb;
+  box-shadow: 0 0 0 3px rgba(36, 104, 235, 0.1);
+}
+
+:root[data-theme='light'] .department-card-meta div {
+  border-top-color: #e0e4eb;
+}
+
+:root[data-theme='light'] .department-card-meta dt {
+  color: #7b8492;
+}
+
+:root[data-theme='light'] .department-card-meta dd {
+  color: #424954;
+}

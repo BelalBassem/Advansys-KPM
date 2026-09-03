@@ -15,6 +15,12 @@ public class FunctionController : ControllerBase
         _function = fs;
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetFunctions([FromQuery] int? departmentId)
+    {
+        return Ok(await _function.getFunctions(departmentId));
+    }
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetFunctionByID(int id)
     {
@@ -27,11 +33,44 @@ public class FunctionController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateFunction(string name)
+    public async Task<IActionResult> CreateFunction(string name, int departmentId)
     {
-        var functionId = await _function.createFunction(name);
+        try
+        {
+            var functionId = await _function.createFunction(name, departmentId);
+            return Ok(functionId);
+        }
+        catch (ArgumentException exception)
+        {
+            return BadRequest(exception.Message);
+        }
+    }
 
-        return Ok(functionId);
+    [HttpGet("{functionId:int}/departments")]
+    public async Task<IActionResult> GetFunctionDepartments(int functionId)
+    {
+        return Ok(await _function.getFunctionDepartments(functionId));
+    }
+
+    [HttpPost("{functionId:int}/departments/{departmentId:int}")]
+    public async Task<IActionResult> AddFunctionToDepartment(int functionId, int departmentId)
+    {
+        try
+        {
+            await _function.addFunctionToDepartment(functionId, departmentId);
+            return Ok(new { functionId, departmentId });
+        }
+        catch (ArgumentException exception)
+        {
+            return BadRequest(exception.Message);
+        }
+    }
+
+    [HttpDelete("{functionId:int}/departments/{departmentId:int}")]
+    public async Task<IActionResult> RemoveFunctionFromDepartment(int functionId, int departmentId)
+    {
+        var removed = await _function.removeFunctionFromDepartment(functionId, departmentId);
+        return removed ? NoContent() : NotFound();
     }
 
     [HttpPut("{id:int}")]

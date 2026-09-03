@@ -15,15 +15,18 @@ public class IndustryController : ControllerBase
         _industry = industryService;
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetIndustries()
+    {
+        var industries = await _industry.getAllIndustries();
+        return Ok(industries);
+    }
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetIndustryByID(int id)
     {
         var industry = await _industry.getIndustry(id);
-
-        if (industry is null)
-            return NotFound();
-
-        return Ok(industry);
+        return industry is null ? NotFound() : Ok(industry);
     }
 
     [HttpPost]

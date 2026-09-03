@@ -15,10 +15,10 @@ public class DepartmentController : ControllerBase
         _department = ds;
     }
 
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetDepartmentByID(int id)
+    [HttpGet]
+    public async Task<IActionResult> GetDepartment()
     {
-        var department = await _department.getDepartment(id);
+        var department = await _department.getDepartments();
 
         if (department is null)
             return NotFound();

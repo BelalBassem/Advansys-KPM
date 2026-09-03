@@ -1,6 +1,5 @@
 using Asp.Versioning;
 using Application.Features.Department;
-using Application.Features.DepartmentFunction;
 using Application.Features.Function;
 using Application.Features.Industry;
 using Application.Features.Lesson;
@@ -32,12 +31,22 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5175")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<DepartmentService>();
 builder.Services.AddScoped<FunctionService>();
 builder.Services.AddScoped<IndustryService>();
 builder.Services.AddScoped<LessonService>();
-builder.Services.AddScoped<DepartmentFunctionService>();
 
 var app = builder.Build();
 
@@ -46,6 +55,7 @@ app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "KPM API v1");
 });
+app.UseCors("AllowFrontend");
 app.MapControllers();
 
 app.Run();

@@ -1,6 +1,5 @@
 namespace Application.Features.Department;
 using Domain.Entities;
-using Application.Departments.DTOs;
 using Application.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,31 +14,26 @@ public class DepartmentService
         _logger = logger;
     }
 
-    public async Task<DepartmentDTO?> getDepartment(int id)
+    public async Task<List<Department>> getDepartments()
     {
         try
         {
             var returned = await _context.Department
-            .Where(department => department.Id == id)
-            .FirstOrDefaultAsync();
+            .ToListAsync();
 
-            if (returned is null)
+            if (returned.Count == 0)
             {
-                _logger.LogWarning("Department {DepartmentId} was not found", id);
-                return null;
+                _logger.LogWarning("No departments were found");
+                return returned;
             }
 
-            _logger.LogInformation("Department {DepartmentId} was retrieved successfully", id);
+            _logger.LogInformation("Departments were retrieved successfully");
 
-            return new DepartmentDTO
-            {
-                Name = returned.Name,
-                CreationDate = returned.CreatedDate
-            };
+            return returned;
         }
         catch (Exception exception)
         {
-            _logger.LogError(exception, "Failed to retrieve department {DepartmentId}", id);
+            _logger.LogError(exception, "Failed to retrieve department {DepartmentId}");
             throw;
         }
     }
@@ -51,8 +45,8 @@ public class DepartmentService
             var department = new Department
             {
                 Name = name,
-                CreatedDate = DateTime.UtcNow,
-                ModifiedDate = DateTime.UtcNow
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
             };
 
             await _context.Department.AddAsync(department);
@@ -81,7 +75,7 @@ public class DepartmentService
             }
 
             department.Name = name;
-            department.ModifiedDate = DateTime.UtcNow;
+            department.ModifiedDate = DateTime.Now;
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Department {DepartmentId} was updated successfully", id);

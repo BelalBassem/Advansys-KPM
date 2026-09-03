@@ -77,6 +77,10 @@
 .group-button {
   align-self: flex-end;
   min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   margin-top: 16px;
   padding: 0 16px;
   border: 1px solid #41516b;
@@ -90,11 +94,102 @@
   background: rgba(23, 37, 59, 0.9);
 }
 
+.group-button[aria-pressed='true'] {
+  border-color: #8dbdff;
+  color: #ffffff;
+  background: rgba(45, 94, 151, 0.72);
+}
+
 .lesson-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
   gap: 28px;
+}
+
+.lesson-results {
   margin-top: 24px;
+}
+
+.lesson-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.lesson-group {
+  min-width: 0;
+}
+
+.lesson-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #35445c;
+}
+
+.lesson-group-title {
+  min-width: 0;
+  margin: 0;
+  color: #f5f7ff;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+.lesson-group-count {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #aeb9ca;
+  background: rgba(7, 14, 27, 0.7);
+  font-size: 12px;
+}
+
+.lessons-status {
+  grid-column: 1 / -1;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 28px;
+  border: 1px dashed #41516b;
+  border-radius: 6px;
+  color: #aeb9ca;
+  text-align: center;
+}
+
+.lessons-error {
+  align-content: center;
+  gap: 16px;
+}
+
+.lessons-error p {
+  margin: 0;
+}
+
+.lessons-retry-button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: 1px solid #8dbdff;
+  border-radius: 5px;
+  color: #081224;
+  background: #8dbdff;
+  font-weight: 600;
+}
+
+.lessons-retry-button:hover {
+  background: #acd0ff;
+}
+
+.lessons-retry-button:focus-visible {
+  outline: 3px solid rgba(173, 132, 255, 0.5);
+  outline-offset: 2px;
 }
 
 :root[data-theme='light'] .lessons-page {
@@ -125,6 +220,40 @@
 :root[data-theme='light'] .group-button:hover {
   border-color: #b9c3d2;
   background: #e3e7ee;
+}
+
+:root[data-theme='light'] .group-button[aria-pressed='true'] {
+  border-color: #2468eb;
+  color: #174fae;
+  background: #eef4ff;
+}
+
+:root[data-theme='light'] .lessons-status {
+  border-color: #c5ccd7;
+  color: #687180;
+}
+
+:root[data-theme='light'] .lesson-group-header {
+  border-bottom-color: #d6dbe4;
+}
+
+:root[data-theme='light'] .lesson-group-title {
+  color: #20242c;
+}
+
+:root[data-theme='light'] .lesson-group-count {
+  color: #687180;
+  background: #edf0f5;
+}
+
+:root[data-theme='light'] .lessons-retry-button {
+  border-color: #2468eb;
+  color: #ffffff;
+  background: #2468eb;
+}
+
+:root[data-theme='light'] .lessons-retry-button:hover {
+  background: #1d58ca;
 }
 
 @media (max-width: 700px) {

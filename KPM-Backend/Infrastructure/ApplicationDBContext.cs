@@ -10,6 +10,9 @@ public class ApplicationDBContext : DbContext, IApplicationDBContext
     public DbSet<Function> Function {get;set;}
     public DbSet<Industry> Industry {get;set;}
     public DbSet<Lesson> Lesson{get;set;}
+    public DbSet<LessonLink> LessonLink { get; set; }
+    public DbSet<LessonKeyword> LessonKeyword { get; set; }
+    public DbSet<LessonDocument> LessonDocument { get; set; }
     public DbSet<User> User {get;set;}
 
     public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) {}

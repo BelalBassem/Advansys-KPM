@@ -13,6 +13,49 @@
   padding: 32px 0 48px;
 }
 
+.lesson-details-status {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  border: 1px solid #34465f;
+  border-radius: 8px;
+  color: #aeb9ca;
+  background: rgba(4, 11, 23, 0.88);
+  text-align: center;
+}
+
+.lesson-details-load-error {
+  align-content: center;
+  gap: 16px;
+}
+
+.lesson-details-load-error p {
+  margin: 0;
+}
+
+.lesson-details-retry-button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: 1px solid #8dbdff;
+  border-radius: 5px;
+  color: #081224;
+  background: #8dbdff;
+  font-weight: 600;
+}
+
+.lesson-details-retry-button:hover {
+  background: #acd0ff;
+}
+
+.lesson-details-status-back {
+  color: #b9d9ff;
+}
+
 .lesson-details-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.55fr) minmax(340px, 1fr);
@@ -33,6 +76,21 @@
   border-radius: 8px;
   background: rgba(4, 11, 23, 0.88);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+.lesson-details-image-box {
+  width: 100%;
+  max-height: 420px;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border-bottom: 1px solid #34465f;
+  background: #07182d;
+}
+
+.lesson-details-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .lesson-details-header {
@@ -80,9 +138,7 @@
 }
 
 .lesson-details-author,
-.lesson-details-rating-share,
-.lesson-details-rating,
-.lesson-details-stars {
+.lesson-details-actions {
   display: flex;
   align-items: center;
 }
@@ -117,30 +173,12 @@
   color: #f6f8fc;
   font-size: 17px;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
-.lesson-details-rating-share {
-  gap: 28px;
-}
-
-.lesson-details-rating {
-  gap: 8px;
-}
-
-.lesson-details-stars {
-  gap: 2px;
-}
-
-.lesson-details-star {
-  width: 18px;
-  height: 18px;
-  color: #ffd75e;
-  fill: currentColor;
-}
-
-.lesson-details-rating-text {
-  color: #e1e7f0;
-  white-space: nowrap;
+.lesson-details-actions {
+  min-height: 38px;
+  gap: 12px;
 }
 
 .lesson-details-share-button {
@@ -160,6 +198,11 @@
 .lesson-details-share-icon {
   width: 17px;
   height: 17px;
+}
+
+.lesson-details-share-status {
+  color: #9ce9df;
+  font-size: 13px;
 }
 
 .lesson-details-section {
@@ -189,6 +232,10 @@
 
 .lesson-details-description p + p {
   margin-top: 14px;
+}
+
+.lesson-details-description {
+  white-space: pre-line;
 }
 
 .lesson-details-back-button {
@@ -234,10 +281,22 @@
   text-transform: uppercase;
 }
 
+.lesson-details-attachment-list,
+.lesson-details-link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .lesson-details-attachment {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.lesson-details-attachment + .lesson-details-attachment {
+  padding-top: 16px;
+  border-top: 1px solid #263850;
 }
 
 .lesson-details-attachment-icon {
@@ -278,6 +337,7 @@
   border-radius: 6px;
   color: #9aa8bb;
   background: transparent;
+  text-decoration: none;
 }
 
 .lesson-details-download-button:hover {
@@ -292,11 +352,17 @@
 }
 
 .lesson-details-quick-link {
+  min-width: 0;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   color: #83bbff;
   text-decoration: none;
+}
+
+.lesson-details-quick-link span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .lesson-details-quick-link:hover {
@@ -315,11 +381,21 @@
 }
 
 .lesson-details-keyword {
+  max-width: 100%;
+  overflow: hidden;
   padding: 7px 13px;
   border: 1px solid #34465f;
   border-radius: 6px;
   color: #aeb9ca;
   background: #19283b;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lesson-details-empty {
+  margin: 0;
+  color: #748297;
   font-size: 14px;
 }
 
@@ -363,6 +439,8 @@
 }
 
 .lesson-details-share-button:focus-visible,
+.lesson-details-retry-button:focus-visible,
+.lesson-details-status-back:focus-visible,
 .lesson-details-download-button:focus-visible,
 .lesson-details-quick-link:focus-visible,
 .lesson-details-create-button:focus-visible,
@@ -403,14 +481,13 @@
     font-size: 24px;
   }
 
-  .lesson-details-author-row,
-  .lesson-details-rating-share {
-    align-items: flex-start;
-    flex-direction: column;
+  .lesson-details-image-box {
+    aspect-ratio: 16 / 9;
   }
 
-  .lesson-details-rating-share {
-    gap: 14px;
+  .lesson-details-author-row {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .lesson-details-sidebar {
@@ -423,11 +500,6 @@
 }
 
 @media (max-width: 440px) {
-  .lesson-details-rating {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .lesson-details-title {
     font-size: 21px;
   }
@@ -438,11 +510,36 @@
   background: #f5f7fa;
 }
 
+:root[data-theme='light'] .lesson-details-status {
+  border-color: #d6dbe4;
+  color: #687180;
+  background: #ffffff;
+}
+
+:root[data-theme='light'] .lesson-details-retry-button {
+  border-color: #2468eb;
+  color: #ffffff;
+  background: #2468eb;
+}
+
+:root[data-theme='light'] .lesson-details-retry-button:hover {
+  background: #1d58ca;
+}
+
+:root[data-theme='light'] .lesson-details-status-back {
+  color: #2468eb;
+}
+
 :root[data-theme='light'] .lesson-details-card,
 :root[data-theme='light'] .lesson-details-sidebar-panel {
   border-color: #d6dbe4;
   background: #ffffff;
   box-shadow: 0 10px 28px rgba(31, 42, 58, 0.06);
+}
+
+:root[data-theme='light'] .lesson-details-image-box {
+  border-bottom-color: #d6dbe4;
+  background: #eef4ff;
 }
 
 :root[data-theme='light'] .lesson-details-header {
@@ -465,18 +562,22 @@
 }
 
 :root[data-theme='light'] .lesson-details-author-label,
-:root[data-theme='light'] .lesson-details-attachment-size {
+:root[data-theme='light'] .lesson-details-attachment-size,
+:root[data-theme='light'] .lesson-details-empty {
   color: #7c8593;
 }
 
 :root[data-theme='light'] .lesson-details-author-name,
-:root[data-theme='light'] .lesson-details-rating-text,
 :root[data-theme='light'] .lesson-details-attachment-name {
   color: #20242c;
 }
 
 :root[data-theme='light'] .lesson-details-share-button {
   color: #4c5460;
+}
+
+:root[data-theme='light'] .lesson-details-share-status {
+  color: #176a60;
 }
 
 :root[data-theme='light'] .lesson-details-share-button:hover,
@@ -517,6 +618,10 @@
   border-color: #c9d2df;
   color: #20242c;
   background: #eef3fb;
+}
+
+:root[data-theme='light'] .lesson-details-attachment + .lesson-details-attachment {
+  border-top-color: #e0e4eb;
 }
 
 :root[data-theme='light'] .lesson-details-keyword {
